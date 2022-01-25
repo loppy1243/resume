@@ -1,0 +1,13 @@
+\newsavebox\mycv@addressbox
+\newsavebox\mycv@headerbox
+\newsavebox\mycv@redactedbox
+
+\def\mycv@part@stretch{0.5fil}
+
+\def\mycv@def@if#1#2%
+   {\expandafter\def\csname mycv@if#1\endcsname##1##2{#2 ##1\else##2\fi}%
+    \expandafter\def\csname mycv@if#1T\endcsname##1{#2 ##1\fi}%
+    \expandafter\def\csname mycv@if#1F\endcsname##1{#2\else##1\fi}}%
+
+\mycv@def@if{@beforefirstpart}{\ifnum\value{part}=1}
+\mycv@def@if{@firstpage}{\ifnum\value{page}=1}

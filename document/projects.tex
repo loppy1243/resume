@@ -1,0 +1,126 @@
+\projectheader
+   {}%
+   {\normalfont\underline{\raisebox{0pt}[\height][0.4ex]{GitHub}}}%
+   {\normalfont\underline{\raisebox{0pt}[\height][0.4ex]{Tech}}}%
+   {}
+\vspace{1ex}
+
+\begin{project}{This Resume}{resume}\LaTeX{2022}
+    \item You're looking at branch \texttt{master}.
+\end{project}
+
+\begin{project}{Geometric/Clifford Algebra Library}{GeomAlg}{Julia}{In progress}
+    \item Uses the \textttbf{Cassette.jl} package
+        for the ergonomic and performant handling of quadratic forms
+        \textit{as an execution context} for multivectors
+        rather than an additional piece of data to be passed around.
+    \item Implements a basic multivector type
+        described in Breuils, Nozick, and Fuchs'
+        \textit{A Geometric Algebra Implementation using Binary Tree} (2017)
+        and extends it to work with a kind of tridiagonal quadratic form
+        that all others are equivalent to.
+    \item Plan to implement De Keninck and Dorst's
+        \textit{Hyperwedge} (2020) algorithm
+        for efficiently computing outer products of vectors.
+\end{project}
+
+\begin{project}{Personal Website}{fract-refract}{Julia,JS,CSS,HTML}{2022}
+    \item Built with the \textttbf{Franklin.jl} static site generator for Julia,
+        intended to host a blog and any of my many other writings.
+    \item Uses \emph{JavaScript} and \emph{CSS}
+        to display side notes to the side of the main text,
+        placed on the page with an animation,
+        spacing themselves out so they don't overlap,
+        and displaying correctly when the page is resized.
+\end{project}
+
+\begin{project}{Ruled Paper Printer}{}{PostScript, Bash}{2020}
+    \item Customizably generates a \emph{PostScript} file
+        that can be sent to a printer to print lines and markings
+        for practicing calligraphy.
+\end{project}
+
+\begin{project}{Ising Model RBM}{IsingBoltzmann}{Julia, CUDA}{2019}
+    \item Implements a \emph{restricted Boltzmann machine} (RBM)
+        that learns an Ising model following Torlai and Melko's
+        \textit{Learning Thermodynamics with Boltzmann Machines} (2016).
+    \item Estimates the Kullback-Leibler divergence
+        (the loss function for the RBM)
+        using the contrastive divergence algorithm.
+    \item Tests the validity of the RBM
+        by comparing it to \emph{Metropolis-Hastings} samples
+        of the Ising model.
+    \item Implements optional \emph{CUDA} acceleration
+        via the \textttbf{CuArrays.jl} and \textttbf{CUDAnative.jl} packages.
+\end{project}
+
+\begin{project}{Exercises in HPC}{cmse401-git}%
+               {\parbox[t]{2in}%
+                   {C, CUDA, OpenMP, MPI,\\
+                    Julia, Bash, AWK, gnuplot,\\
+                    Python, Makefiles, SLURM}}%
+               {2019}
+    \item Implementation of HPC methods in topics such as
+        solving ODEs, 
+        matrix operations,
+        image processing,
+        and actor models.
+    \item Detailed numerical comparisons with na\"ive methods,
+        with writeups on GitHub in each subfolder.
+    \item All programs were run
+        on Michigan State University's High Performance Computing Cluster,
+        which runs \emph{Linux} and is accessed via \emph{SSH}.
+    Programs were scheduled with the \emph{SLURM} workload manager.
+\end{project}
+
+\begin{project}{Exercises in Computational Physics}{PHY480}{C++, GSL, gnuplot}{2019}
+    \item Covers topics such as
+        summation order,
+        integration/differentiation methods,
+        and truncated Hamiltonian diagonalization.
+    \item Detailed numerical comparisons of errors and performance.
+    \item Extensive use of \emph{Makefiles} for building all associated items
+        and \emph{gnuplot} for analyzing generated data.
+    \item Occasional use of \emph{OpenMP} to speed up stupidly parrallel loops.
+\end{project}
+
+\begin{project}{Electron Incidence Inference}{BetaML\_NN}{Julia}{2018}
+    \item Predicts the location of an electron
+        incident on a rectangular array of cells
+        by first predicting which cell with a
+        \emph{convolutional neural network},
+        and then predicting a more precise location within that cell
+        with a \emph{dense} neural network.
+    \item The model performs \emph{significantly better}
+        than a model that selects the highest energy cell
+        and a random point within it.
+    \item Reads in, parses, and normalizes CSV data.
+    \item Uses the \textttbf{Flux.jl} \emph{machine learning} package.
+\end{project}
+
+\begin{project}{Simple x86 Bootloader}{bootloader}{x86}{${\sim}$2012}
+    \item Two-stage bootloader written in \emph{Intel syntax x86 assembly}
+        for the \emph{NASM} assembler.
+    \item First stage fits within 512\,kB.
+    Put at the start of the first sector of an MBR hard disk,
+        it loads a second stage at the start of the second sector.
+    The second stage prints ``Hello, World!'' using the \emph{BIOS}.
+\end{project}
+
+\begin{project}{Music Notation Compiler}{music}{Racket, x86-64}{${\sim}$2012}
+    \item Compiles a text file of a custom music \emph{DSL} into beeps.
+    \item Supports musical notes, tempos, key signatures, and octaves;
+        and \emph{loops}, \emph{conditionals},
+        and \emph{functions with parameters}.
+    \item Uses a \emph{parser-generator}
+        (part of the Racket standard library)
+        similar to YACC to parse the source into an AST;
+        this is transformed into an assembly-like IR;
+        and this is passed to a back-end.
+    \item Included back-ends are:
+        an \emph{interpreter} that interfaces with an external beep program;
+        and a \emph{native binary} generator
+        that performs floating-point calculations
+        in \emph{x86-64 assembly}
+        and interfaces with the \emph{C standard library}.
+\end{project}

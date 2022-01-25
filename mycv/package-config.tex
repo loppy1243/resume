@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% enumitem
+
+\setlist[itemize]%
+   {label=\textbullet,nosep,labelsep=0.5ex,leftmargin=*,noitemsep}
+\setlist[itemize,2]{afterlabel=\,}
+\setlist[itemize,3]{afterlabel={}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% hyperref
+
+\PassOptionsToPackage{colorlinks=true}{hyperref}
+
+\AtBeginDocument%
+   {\@ifpackageloaded{hyperref}%
+       {\global\let\mycv@theemail@\theemail
+        \gdef\theemail{\href{mailto:\mycv@email}\mycv@theemail@}%
+        \global\let\mycv@websiteformat@\websiteformat
+        \gdef\websiteformat#1{\url{#1}}}%
+       {}}%

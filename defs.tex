@@ -1,0 +1,84 @@
+\newlength\headerspace \setlength\headerspace{0.5ex}
+\newlength\bodyspace \setlength\bodyspace{2.5ex}
+\newcommand\headerskip{\vspace\headerspace}
+\newcommand\bodyskip{\vspace\bodyspace}
+
+\newcommand*\schoolheader[4]%
+   {\infoline{\bfseries#1}[r]{#2}%
+    \infoline{\itshape#4}[r]{#3}}
+
+\newcounter{schools}
+\makeatletter
+\newenvironment*{school}[4]%
+   {\let\old@itemize\itemize
+    \let\old@enditemize\enditemize
+    \renewenvironment*{itemize}%
+       {\vspace{\dimexpr\headerspace}%
+        \old@itemize[nosep]}%
+       \old@enditemize
+    \stepcounter{schools}%
+    \ifnum\value{schools}=1\else
+        \bodyskip
+    \fi
+    \begin{minipage}[t]\textwidth
+    \schoolheader{#1}{#2}{#3}{#4}}
+   {\end{minipage}\par}
+\makeatother
+
+\newcommand*\projectheader[4]%
+   {\infoline
+       {\bfseries#1}%
+       {\makebox[0.4\dimexpr\textwidth-\midindent][l]{\texttt{#2}}%
+        \makebox[0.6\dimexpr\textwidth-\midindent][l]{\textsl{#3}\hfill#4}}}
+
+\newcounter{projects}
+\newenvironment*{project}[4]%
+   {\stepcounter{projects}%
+    \ifnum\value{projects}=1\else
+        \bodyskip
+    \fi
+    \begin{minipage}[t]\textwidth
+    \projectheader{#1}{#2}{#3}{#4}%
+    \headerskip
+    \begin{itemize}[nosep]}%
+   {\end{itemize}\end{minipage}\par}
+
+\newcommand*\jobheader[4]%
+   {\infoline{\bfseries#1}%
+       {\makebox[\dimexpr\textwidth-\midindent-24ex][l]{\textsl{#2}}%
+        \makebox[24ex][c]%
+           {\makebox[10ex][r]{#3}%
+            \makebox[3ex][r]{--}%
+            \makebox[11ex][r]{#4}}}}
+
+\newcounter{jobs}
+\newenvironment*{job}[4]%
+   {\stepcounter{jobs}%
+    \ifnum\value{jobs}=1\else
+        \bodyskip%
+    \fi
+    \begin{minipage}[t]\textwidth
+    \jobheader{#1}{#2}{#3}{#4}%
+    \headerskip
+    \begin{itemize}[nosep]}%
+   {\end{itemize}\end{minipage}\par}
+
+\makeatletter
+\newenvironment*{skills}%
+   {\begin{itemize}[nosep]%
+    \let\old@item\item
+    \renewcommand\item[1]{\old@item \textbf{##1:}}}%
+   {\end{itemize}}
+\makeatother
+
+\newenvironment*{FIXME}%
+   {\color{red}}%
+   {}
+
+\newcommand\textttbf[1]{\texttt{\bfseries#1}}
+
+\newcommand\lolbullshit[1]%
+   {\parbox[t][0pt]{0pt}{\scalebox{#1}{\begin{minipage}[t]\textwidth
+        \color{white}%
+        \input{jobdesc.txt}%
+    \end{minipage}}}}

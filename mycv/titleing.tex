@@ -1,0 +1,47 @@
+\renewcommand*\author[1]{\gdef\mycv@author{#1}}
+\newcommand*\theauthor\mycv@author
+
+\newcommand*\email[1]{\gdef\mycv@email{#1}}
+\newcommand*\theemail\mycv@email
+
+\newcommand*\phone[1]{\gdef\mycv@phone{#1}}
+\newcommand*\thephone\mycv@phone
+
+\newcommand*\location[1]{\gdef\mycv@location{#1}}
+\newcommand*\thelocation\mycv@location
+
+\def\websiteformat#1{#1}
+\newcommand*\website[2][\quad]%
+   {\ifcsname mycv@websites\endcsname
+       \g@addto@macro\mycv@websites{#1\websiteformat{#2}}%
+    \else
+       \gdef\mycv@websites{\websiteformat{#2}}%
+    \fi}
+\newcommand*\thewebsites\mycv@websites
+
+\newcommand\doublerule[3]%
+   {\raisebox
+       {\dimexpr\baselineskip+0.5\dimexpr#2}%
+       [\dimexpr#3+2\dimexpr#2][0pt]%
+       {\raisebox{0pt}[0pt][0pt]%
+           {\raisebox{0pt}[#2][0pt]{\parbox[t]{#1}%
+               {\rule[-\dimexpr\baselineskip-#3]{#1}{#2}%
+                \\
+                \rule{#1}{#2}}}}}}
+
+\renewcommand*\maketitle
+   {\parbox[t]{0.2875\textwidth}%
+       {\raggedright\large \thelocation}%
+    \makebox[0.425\textwidth][c]%
+       {\sbox\mycv@addressbox{\large\thelocation}%
+        \sbox\mycv@headerbox{\Huge\textbf{\theauthor}}%
+        \raisebox{\dimexpr\ht\mycv@addressbox-\ht\mycv@headerbox}%
+           {\Huge\textbf{\mycv@author}}}%
+    \parbox[t]{0.2875\textwidth}%
+       {\raggedleft\large
+        \thephone \\ \theemail}%
+    \par\vspace{2ex}%
+    {\centering\large\thewebsites\par}%
+    \par
+    \doublerule\textwidth{0.3pt}{1mm}%
+    \par}

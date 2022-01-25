@@ -1,0 +1,13 @@
+%%% We use kvoptions, as you can see below,
+%%%     and we use the standard option system
+%%%     to pass extra options onto article.
+%%% We need to declare each option for both kvoptions
+%%%     and the standard option system if we're using both.
+
+\DeclareOption*{\PassOptionsToClass\CurrentOption{article}}
+
+\DeclareOption{midindent}{}
+\DeclareStringOption[0.45\textwidth]{midindent}
+
+\DeclareOption{compact}{}
+\DeclareBoolOption[false]{compact}

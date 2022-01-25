@@ -1,0 +1,31 @@
+\newlength\midindent 
+
+\setlength\parindent{0pt}
+\setlength\parskip{0pt}
+\setlength\midindent\mycv@midindent
+
+\renewcommand*\em\bfseries
+\newcommand*\unem\mdseries
+\DeclareTextFontCommand\unemph\unem
+
+\newcommand*\setmycv[1]%
+   {\setkeys{mycv}{#1}%
+    \setlength\midindent\mycv@midindent}
+
+\NewDocumentCommand\infoline{O{l} m O{l} m}%
+   {\begingroup\large
+    \makebox[\midindent][#1]{#2}%
+    \makebox[\dimexpr\textwidth-\midindent][#3]{#4}%
+    \endgroup
+    \par}
+
+\NewDocumentCommand\redact{m O{c} m}%
+   {\texorpdfstring
+       {\IfNoValueTF{#3}%
+           {\colorbox{black}{\color{black}#1}}%
+           {\begingroup
+            \setlength\fboxsep{0pt}%
+            \sbox\mycv@redactedbox{#1}%
+            \colorbox{black}{\makebox[\wd\mycv@redactedbox][#2]{\color{white}#3}}%
+            \endgroup}}%
+       {}}

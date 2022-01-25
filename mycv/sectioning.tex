@@ -1,0 +1,16 @@
+\titleformat\part{}{}{0pt}%
+   {\begingroup
+    \def\mycv@part@formatted@{\Large\bfseries#1}%
+    \savebox\mycv@headerbox[\dimexpr\width+3ex][c]\mycv@part@formatted@
+    \hfill
+    \rule{0.3\dimexpr\textwidth-\wd\mycv@headerbox}{0.4pt}%
+    \usebox\mycv@headerbox
+    \rule{0.3\dimexpr\textwidth-\wd\mycv@headerbox}{0.4pt}%
+    \hfill
+    \endgroup}
+
+\ifmycv@compact
+    \titlespacing*\part{0pt}{3.5ex}{1ex}%
+\else
+    \titlespacing*\part{0pt}{3.5ex plus \mycv@part@stretch}{1ex}%
+\fi

@@ -1,0 +1,21 @@
+\fancypagestyle{mycv}%
+   {\fancyhf{}%
+    % Set margin above header to 2ex
+    \setlength\topmargin{\dimexpr2ex-1in}%
+    % Separate header from main text so that total margin above is 0.5in
+    \setlength\headsep{\dimexpr0.5in-\topmargin-1in-\headheight}%
+    % Keep footer 3ex from the bottom of the page
+    %     while keeping 0.5in margin below main text
+    \setlength\footskip{\dimexpr\paperheight-3ex}%
+    \addtolength\footskip{-\dimexpr\textheight+\headsep}%
+    \addtolength\footskip{-\dimexpr\headheight+\topmargin}%
+    \addtolength\footskip{-\dimexpr\voffset+1in}%
+    %
+    \renewcommand*\headrulewidth{0pt}%
+    \rhead{\mycv@if@firstpageF
+       {\makebox[0.35\textwidth][l]\thelocation
+        \makebox[0.30\textwidth][c]{\textbf\theauthor}%
+        \makebox[0.35\textwidth][r]{\thephone~|~\theemail}}}%
+    \rfoot\thepage}
+
+\pagestyle{mycv}
